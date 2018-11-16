@@ -1,134 +1,20 @@
-Social login api for Angular 6. Includes Facebook and Google login.  
+This is a fork from https://github.com/high54/angular-6-social-login
 
-[AOT](https://angular.io/guide/aot-compiler) Compatible.
+I have fix problem with LINKEDIN auth !!!!
 
+Pulled version - 1.1.1
+
+I have no plans to support this repo.
 
 ## Getting started
 
 
-### Install via npm 
+### New version for Install via npm 
 
 ```sh
-npm install --save angular-6-social-login
+npm install --save taylortrey/angular-6-social-login
 ```
 
-### Import the module
+### All other stuff you can find in link below
 
-In `app.module.ts`,
-
-```javascript
-...
-
-import {
-    SocialLoginModule,
-    AuthServiceConfig,
-    GoogleLoginProvider,
-    FacebookLoginProvider,
-} from "angular5-social-login";
-
-
-// Configs 
-export function getAuthServiceConfigs() {
-  let config = new AuthServiceConfig(
-      [
-        {
-          id: FacebookLoginProvider.PROVIDER_ID,
-	      provider: new FacebookLoginProvider("Your-Facebook-app-id")
-        },
-        {
-          id: GoogleLoginProvider.PROVIDER_ID,
-	      provider: new GoogleLoginProvider("Your-Google-Client-Id")
-        },
-      ];
-  );
-  return config;
-}
-
-@NgModule({
-  imports: [
-    ...
-    SocialLoginModule
-  ],
-  providers: [
-    ...
-    {
-      provide: AuthServiceConfig,
-      useFactory: getAuthServiceConfigs
-    }
-  ],
-  bootstrap: [...]
-})
-
-export class AppModule { }
-
-```
-
-### Usage : 
-
-In `signin.component.ts`,
-
-```javascript
-import {Component, OnInit} from '@angular/core';
-import {
-    AuthService,
-    FacebookLoginProvider,
-    GoogleLoginProvider
-} from 'angular5-social-login';
-
-@Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
-})
-
-
-export class SigninComponent implements OnInit {
-
-  constructor( private socialAuthService: AuthService ) {}
-  
-  public socialSignIn(socialPlatform : string) {
-    let socialPlatformProvider;
-    if(socialPlatform == "facebook"){
-      socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
-    }else if(socialPlatform == "google"){
-      socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
-    }
-    
-    this.socialAuthService.signIn(socialPlatformProvider).then(
-      (userData) => {
-        console.log(socialPlatform+" sign in data : " , userData);
-        // Now sign-in with userData
-        // ...
-            
-      }
-    );
-  }
-  
-}
-```
-
-
-
-In `signin.component.html`,
-
-```html
-<h1>
-     Sign in
-</h1>
-
-<button (click)="socialSignIn('facebook')">Sign in with Facebook</button>
-<button (click)="socialSignIn('google')">Sign in with Google</button>              
-```
-
-
-
-### Facebook App Id : 
-
-You need to create your own app by going to [Facebook Developers](https://developers.facebook.com/) page.
-Add `Facebook login` under products and configure `Valid OAuth redirect URIs`.
-
-### Google Client Id : 
-
-Follow this official documentation on how to [
-Create a Google API Console project and client ID](https://developers.google.com/identity/sign-in/web/devconsole-project).
-
+https://github.com/high54/angular-6-social-login
